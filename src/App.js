@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   handleDropdownSelection = (newArea, host) => {
-    let hosts = [...this.state.hosts].forEach(h => h.id === host.id ? h.area = newArea.name : h.area)
+    let hosts = [...this.state.hosts].map(h => h.id === host.id ? h.area = newArea.name : h.area)
 
     this.setState({
       hosts: hosts,
@@ -81,7 +81,7 @@ class App extends Component {
   }
 
   handleToggle = (host) => {
-    let hosts = [...this.state.hosts].forEach(h => h.id === host.id ? h.active = !host.active : h.active)
+    let hosts = [...this.state.hosts].map(h => h.id === host.id ? h.active = !host.active : h.active)
 
     this.setState({
       hosts: hosts,
@@ -92,12 +92,12 @@ class App extends Component {
   handleButton = (e) => {
     if (e.target.innerText === "ACTIVATE ALL") {
       this.setState({
-        ...this.state.hosts.forEach(h => h.active = true),
+        ...this.state.hosts.map(h => h.active = true),
         buttonClicked: true
       })
     } else {
       this.setState({
-        ...this.state.hosts.forEach(h => h.active = false),
+        ...this.state.hosts.map(h => h.active = false),
         buttonClicked: false
       })
     }
